@@ -4,6 +4,8 @@
     <version>1.0</version>
     <modules>
         <module>basic-io</module>
+        <module>nio</module>
+        <module>nio.2</module>
     </modules>
 
     <groupId>com.mawen</groupId>
