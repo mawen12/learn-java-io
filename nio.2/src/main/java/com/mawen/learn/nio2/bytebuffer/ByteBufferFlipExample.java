@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+
+import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
 
 /**
  * Use {@link ByteBuffer#flip()} to flip buffer, it will set limit to current position
@@ -23,7 +26,7 @@ public class ByteBufferFlipExample {
 		FileChannel fc = fis.getChannel();
 
 		ByteBuffer buffer = ByteBuffer.allocate(10);
-		showStatus("init buffer", buffer);
+		showStatus("init buffer", buffer); // position to 0, capacity to 10, limit and remaining are same as capacity
 
 		fc.read(buffer);
 		showStatus("after read", buffer); // position to 10(last byte index + 1), remaining to 0

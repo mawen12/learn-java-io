@@ -28,33 +28,31 @@ public class ByteBufferExample {
 		FileChannel fc = fis.getChannel();
 
 		// allocate a buffer, as big a chunk as we are willing to handle at a pop.
-		ByteBuffer buffer = ByteBuffer.allocate(1024 * 15);
-		showStatus("newly allocated read", fc, buffer);
+		ByteBuffer buffer = ByteBuffer.allocate(100);
+		showStatus("newly allocated read", fc, buffer); // position to 0, limit to 100, remaining to 100, capacity to 100
 
 		// read a chunk of raw bytes, up to 15K bytes long, -1 means EOF
 		int bytesRead = fc.read(buffer);
-		showStatus("after first read", fc, buffer);
+		showStatus("after first read", fc, buffer); // position to 100, limit to 100, remaining to 0, capacity to 100
 
 		// flip from filling to emptying
-		showStatus("before flip", fc, buffer);
 		buffer.flip();
-		showStatus("after flip", fc, buffer);
-		byte[] receive = new byte[1024];
+		showStatus("after flip", fc, buffer); // position to 0, limit to 100, remaining to 100, capacity to 100
+		byte[] receive = new byte[10];
 		buffer.get(receive);
-		showStatus("after first get", fc, buffer);
+		showStatus("after first get", fc, buffer); // position to 10, limit to 100, remaining to 90, capacity to 100
 		buffer.get(receive);
-		showStatus("after second get", fc, buffer);
+		showStatus("after second get", fc, buffer); // position to 20, limit to 100, remaining to 80, capacity to 100
 
 		// empty buffer to fill with more data
 		buffer.clear();
-		showStatus("after clear", fc, buffer);
+		showStatus("after clear", fc, buffer); // position to 0, limit to 100, remaining to 100, capacity to 100
 		bytesRead = fc.read(buffer);
-		showStatus("after second read", fc, buffer);
+		showStatus("after second read", fc, buffer); // position to 100, limit to 100, remaining to 0, capacity to 100
 
 		// flip from filling to emptying
-		showStatus("before flip", fc, buffer);
 		buffer.flip();
-		showStatus("after flip", fc, buffer);
+		showStatus("after flip", fc, buffer); // position to 0, limit to 100, remaining to 100, capacity to 100
 		fc.close();
 	}
 
