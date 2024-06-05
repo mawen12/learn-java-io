@@ -18,19 +18,20 @@ public class BufferCompactDemo {
 		buffer.put((byte) 1).put((byte) 2).put((byte) 3);
 		buffer.position(3);
 
+		print(buffer);
+
+		buffer.compact();
+
+		print(buffer);
+	}
+
+
+	static void print(ByteBuffer buffer) {
 		System.out.println("Buffer elements: " + Arrays.toString(buffer.array()));
 		System.out.println("Capacity: " + buffer.capacity());
 		System.out.println("Limit: " + buffer.limit());
 		System.out.println("Position: " + buffer.position());
 		System.out.println("Remaining: " + buffer.remaining());
 		System.out.println();
-
-		buffer.compact();
-
-		System.out.println("Buffer elements: " + Arrays.toString(buffer.array()));
-		System.out.println("Capacity: " + buffer.capacity());
-		System.out.println("Limit: " + buffer.limit());
-		System.out.println("Position: " + buffer.position());
-		System.out.println("Remaining: " + buffer.remaining());
 	}
 }
