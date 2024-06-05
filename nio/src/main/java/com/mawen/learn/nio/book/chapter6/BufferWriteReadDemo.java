@@ -1,4 +1,4 @@
-package com.mawen.learn.nio.book.charpter6;
+package com.mawen.learn.nio.book.chapter6;
 
 import java.nio.ByteBuffer;
 

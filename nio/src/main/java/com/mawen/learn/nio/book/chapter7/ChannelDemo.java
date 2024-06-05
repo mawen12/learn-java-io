@@ -1,4 +1,4 @@
-package com.mawen.learn.nio.book.charpter7;
+package com.mawen.learn.nio.book.chapter7;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
